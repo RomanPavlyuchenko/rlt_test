@@ -42,10 +42,12 @@ async def get_data(msg: Message):
         result_dict[date] if date in result_dict else 0 for date in dates
     ]
 
-    await msg.answer({
-        'dataset': filled_values,
-        'labels': dates
-    })
+    await msg.answer(
+        json.dumps({
+            "dataset": filled_values,
+            "labels": dates
+        })
+    )
 
 
 async def register_user(dp: Dispatcher):
