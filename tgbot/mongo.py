@@ -38,26 +38,33 @@ def get_pipeline(
                         }
                     }
                 },
-                'total': {'$sum': "$value"}
+                'total': {
+                    '$sum': '$value'
+                }
             }
         },
         {
-           '$sort': {'_id': 1}
+           '$sort': {
+               '_id': 1
+            }
         },
         {
             '$group': {
-                '_id': None,
-                'dataset': {'$push': '$total'},
-                'labels': {'$push': '$_id.date'}
+                '_id': 'null',
+                'data': {
+                    '$push': {
+                        'k': '$_id.date',
+                        'v': '$total'
+                    }
+                }
             }
         },
         {
-            '$project': {
-                '_id': 0,
-                'dataset': 1,
-                'labels': 1
+            '$replaceRoot': {
+                'newRoot': {
+                    '$arrayToObject': '$data'
+                }
             }
-        },
-
+        }
     ]
     return pipeline
