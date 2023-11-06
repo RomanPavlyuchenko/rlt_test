@@ -106,6 +106,22 @@ optional = false
 python-versions = ">=3.7.0"
 
 [[package]]
+name = "dnspython"
+version = "2.4.2"
+description = "DNS toolkit"
+category = "main"
+optional = false
+python-versions = ">=3.8,<4.0"
+
+[package.extras]
+doq = ["aioquic (>=0.9.20)"]
+dnssec = ["cryptography (>=2.6,<42.0)"]
+doh = ["h2 (>=4.1.0)", "httpcore (>=0.17.3)", "httpx (>=0.24.1)"]
+idna = ["idna (>=2.1,<4.0)"]
+trio = ["trio (>=0.14,<0.23)"]
+wmi = ["wmi (>=1.5.1,<2.0.0)"]
+
+[[package]]
 name = "flake8"
 version = "6.1.0"
 description = "the modular source code checker: pep8 pyflakes and co"
@@ -217,6 +233,26 @@ optional = false
 python-versions = ">=3.8"
 
 [[package]]
+name = "pymongo"
+version = "4.6.0"
+description = "Python driver for MongoDB <http://www.mongodb.org>"
+category = "main"
+optional = false
+python-versions = ">=3.7"
+
+[package.dependencies]
+dnspython = ">=1.16.0,<3.0.0"
+
+[package.extras]
+aws = ["pymongo-auth-aws (<2.0.0)"]
+encryption = ["pymongo", "pymongocrypt (>=1.6.0,<2.0.0)", "certifi"]
+gssapi = ["pykerberos", "winkerberos (>=0.5.0)"]
+ocsp = ["pyopenssl (>=17.2.0)", "requests (<3.0.0)", "cryptography (>=2.5)", "service-identity (>=18.1.0)", "certifi"]
+snappy = ["python-snappy"]
+test = ["pytest (>=7)"]
+zstd = ["zstandard"]
+
+[[package]]
 name = "python-dotenv"
 version = "1.0.0"
 description = "Read key-value pairs from a .env file and set them as environment variables"
@@ -258,7 +294,7 @@ multidict = ">=4.0"
 [metadata]
 lock-version = "1.1"
 python-versions = "^3.10"
-content-hash = "8afc5473fdf047df23d9a8e972d63590714c64e7cc0e91ab1071279c620ab59a"
+content-hash = "d94b6689ef84dead6c466320fff4414756e134da88016870e80aac2580fb8c38"
 
 [metadata.files]
 aiogram = []
@@ -270,6 +306,7 @@ attrs = []
 babel = []
 certifi = []
 charset-normalizer = []
+dnspython = []
 flake8 = []
 frozenlist = []
 idna = []
@@ -281,6 +318,7 @@ pydantic = []
 pydantic-core = []
 pydantic-settings = []
 pyflakes = []
+pymongo = []
 python-dotenv = []
 pytz = []
 typing-extensions = []

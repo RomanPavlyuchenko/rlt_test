@@ -11,7 +11,6 @@ async def main():
     bot = Bot(token=config.tg.token)
     dp = Dispatcher(bot)
 
-    bot['config'] = config
     bot.set_current(bot)
     await register_user(dp)
 
